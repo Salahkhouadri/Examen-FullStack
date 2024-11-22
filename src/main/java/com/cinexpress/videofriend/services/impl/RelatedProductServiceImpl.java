@@ -1,5 +1,10 @@
 package com.cinexpress.videofriend.services.impl;
 
-public interface RelatedProductServiceImpl {
+import org.springframework.stereotype.Service;
+
+import com.cinexpress.videofriend.services.RelatedProductService;
+
+@Service
+public class RelatedProductServiceImpl implements RelatedProductService{
     
 }
