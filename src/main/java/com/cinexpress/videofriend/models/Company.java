@@ -13,8 +13,10 @@ public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
+    @NonNull
     private String name;
+    @NonNull
     private String description;
 
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)

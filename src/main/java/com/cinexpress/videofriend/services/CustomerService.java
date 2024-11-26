@@ -2,13 +2,13 @@ package com.cinexpress.videofriend.services;
 
 import java.util.List;
 
-import com.cinexpress.videofriend.models.Company;
 import com.cinexpress.videofriend.models.Customer;
 import com.cinexpress.videofriend.models.Movie;
 
 public interface CustomerService {
-    void addClientToCompany(Customer customer, Company company);
+    void createCustomer(Customer customer);
+    void addClientToCompany(Long customerId, Long companyId);
     List<Movie> listAllCustomerMovies(Customer customer);
-    boolean hasPremiumSubscription(Customer customer);
-    void updatePremiumSubscription(Customer customer);
+    boolean hasPremiumSubscription(Long customerId);
+    void deactivatePremiumSubscription(Long customerId);
 }

@@ -11,9 +11,11 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @NonNull
     private String title;
+    @NonNull
     private String format;
+    @NonNull
     private String genre;
     private String language;
     private Boolean availability;

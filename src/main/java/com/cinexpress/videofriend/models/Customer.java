@@ -14,8 +14,9 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @NonNull
     private String name;
+    @NonNull
     private String type;
 
     @ElementCollection

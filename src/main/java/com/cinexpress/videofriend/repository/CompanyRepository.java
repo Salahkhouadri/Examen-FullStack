@@ -7,4 +7,5 @@ import com.cinexpress.videofriend.models.Company;
 
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, Long> {
+
 }

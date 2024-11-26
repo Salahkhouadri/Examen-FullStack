@@ -14,8 +14,9 @@ public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @NonNull
     private String itemType;
+    @NonNull
     private Boolean availability;
 
     @OneToMany(mappedBy = "inventory", cascade = CascadeType.ALL)
