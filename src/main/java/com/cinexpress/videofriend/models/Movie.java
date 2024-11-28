@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
+@Table(name = "movies")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,8 +18,12 @@ public class Movie {
     private String format;
     @NonNull
     private String genre;
+    @NonNull
     private String language;
+    @NonNull
     private Boolean availability;
+    @NonNull
+    private Integer year;
 
     @ManyToOne
     @JoinColumn(name = "company_id")

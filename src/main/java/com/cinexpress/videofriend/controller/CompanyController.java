@@ -12,7 +12,7 @@ import com.cinexpress.videofriend.models.Company;
 import com.cinexpress.videofriend.services.CompanyService;
 
 @RestController
-@RequestMapping("'/company'")
+@RequestMapping("/company")
 public class CompanyController {
     @Autowired
     CompanyService companyService;

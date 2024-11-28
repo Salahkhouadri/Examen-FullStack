@@ -5,7 +5,10 @@ import lombok.*;
 
 import java.util.List;
 
+import com.cinexpress.videofriend.utils.Enums.ItemType;
+
 @Entity
+@Table(name = "inventory")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,8 +17,11 @@ public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     @NonNull
-    private String itemType;
+    @Enumerated(EnumType.STRING)
+    private ItemType itemType;
+
     @NonNull
     private Boolean availability;
 

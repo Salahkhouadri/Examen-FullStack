@@ -5,6 +5,7 @@ import lombok.*;
 import java.util.List;
 
 @Entity
+@Table(name = "promotions")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

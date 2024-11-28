@@ -8,5 +8,6 @@ import com.cinexpress.videofriend.models.Promotion;
 public interface PromotionService {
     void addPromotion(Promotion promotion);
     List<Customer> currentCustomersWithPromotion(Promotion promotion);
+    void addPromotionToCustomer(Long promotionId, Long customerId);
     
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
+@Table(name = "premium_subscriptions")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

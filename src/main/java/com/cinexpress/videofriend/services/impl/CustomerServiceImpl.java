@@ -10,6 +10,7 @@ import com.cinexpress.videofriend.models.Company;
 import com.cinexpress.videofriend.models.Customer;
 import com.cinexpress.videofriend.models.Movie;
 import com.cinexpress.videofriend.models.PremiumSubscription;
+import com.cinexpress.videofriend.models.Recommendation;
 import com.cinexpress.videofriend.repository.CompanyRepository;
 import com.cinexpress.videofriend.repository.CustomerRepository;
 import com.cinexpress.videofriend.repository.PremiumSubscriptionRepository;
@@ -39,8 +40,8 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public List<Movie> listAllCustomerMovies(Customer customer) {
-        return customerRepository.findMoviesByCustomerId(customer.getId()).get();
+    public List<Movie> listAllCustomerMovies(Long customerId) {
+        return customerRepository.findMoviesByCustomerId(customerId).get();
     }
 
     @Override
@@ -67,6 +68,45 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     public void createCustomer(Customer customer) {
         customerRepository.save(customer);
+    }
+
+    @Override
+    public Customer getCustomerById(Long id) {
+        Optional<Customer> customer = customerRepository.findById(id);
+        if (customer.isPresent()) {
+            return customer.get();
+        } else {            
+            return null;
+        }
+    }
+
+    @Override
+    public void updateCustomer(Long id, Customer customer) {
+        Customer newCustomer = customerRepository.getReferenceById(id);
+        newCustomer.setName(customer.getName());
+        newCustomer.setType(customer.getType());
+        customerRepository.save(newCustomer);
+    }
+
+    @Override
+    public List<Recommendation> getRecommendations(Long customerId) {
+        return customerRepository.findById(customerId).get().getRecommendations();
+    }
+
+    @Override
+    public void activatePremiumSubscription(Long customerId) {
+        Customer customer = customerRepository.findById(customerId).orElseThrow();
+        
+        PremiumSubscription premiumSubscription = new PremiumSubscription();
+        premiumSubscription.setExclusiveCatalog(true); 
+        premiumSubscription.setDiscounts(true);
+        premiumSubscription.setPreReleases(true);
+
+        premiumSubscription.setCustomer(customer);
+        customer.setPremiumSubscription(premiumSubscription);
+
+        customerRepository.save(customer);
+        premiumSubscriptionRepository.save(premiumSubscription);
     }
     
 }
